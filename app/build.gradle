@@ -49,3 +49,35 @@ subprojects {
 			useJUnitPlatform()
 		}
 }
+
+// 서브 프로젝트 개별 설정, (의존성 설정 X, 프로젝트 관계만 명시)
+project(':api') {
+	allprojects {
+		dependencies {
+			implementation project(':application')
+		}
+	}
+}
+
+project(':application') {
+	dependencies {
+		implementation project(':domain')
+		implementation project(':infra')
+	}
+}
+
+project(':domain') {
+	dependencies {
+	}
+}
+
+project(':infra') {
+	dependencies {
+		implementation project(':domain')
+	}
+}
+
+project(':external-client') {
+	dependencies {
+	}
+}
