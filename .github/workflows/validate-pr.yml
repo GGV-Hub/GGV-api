@@ -18,9 +18,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          gradle-version: '8.7'
       - name: Run chmod to make gradlew executable
         run: |
           cd app
+          ls -al
           chmod +x ./gradlew
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v3
@@ -34,8 +36,8 @@ jobs:
     strategy:
       matrix:
         test:
-          - api:auth
-          - api:ggv
+          - api/auth
+          - api/ggv
           - application
           - domain
           - external-client
@@ -56,8 +58,6 @@ jobs:
         with:
           arguments: --build-cache --parallel :${{ matrix.test }}:test
           cache-read-only: false
-
-           ./gradlew -p api/ggv test
 
 
 
