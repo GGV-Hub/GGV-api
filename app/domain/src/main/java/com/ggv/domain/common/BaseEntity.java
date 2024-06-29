@@ -1,4 +1,4 @@
-package com.ggv.common;
+package com.ggv.domain.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
