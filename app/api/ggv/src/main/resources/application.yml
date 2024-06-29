@@ -1,2 +1,26 @@
-server:
-  port: 8080
+spring:
+  config:
+    import:
+      - classpath:application-common.yaml
+      - classpath:application-cors.yaml
+      - classpath:application-infra.yaml
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+    import:
+ggv:
+  cors:
+    origin-pattern:
+      - http://localhost:*
+---
+spring:
+  config:
+    activate:
+      on-profile: sandbox
+---
+spring:
+  config:
+    activate:
+      on-profile: local
