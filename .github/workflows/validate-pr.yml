@@ -11,6 +11,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    strategy:      
+      matrix:
+        application:
+          - api/auth
+          - api/ggv
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 21
@@ -18,20 +23,29 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - name: Move to app
-        run: cd app
+          gradle-version: '8.7'
       - name: Run chmod to make gradlew executable
         run: |
+          cd app
+          ls -al
           chmod +x ./gradlew
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: --build-cache --parallel classes
-          cache-read-only: false
+        run: |
+          cd app
+          ./gradlew build -p ${{ matrix.application }} --build-cache --parallel classe
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     needs: build
+    strategy:
+      matrix:
+        test:
+          - api/auth
+          - api/ggv
+          - application
+          - domain
+          - external-client
+          - infra
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 21
@@ -39,13 +53,18 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - name: Move to app
-        run: cd app
       - name: Run chmod to make gradlew executable
         run: |
+          cd app
           chmod +x ./gradlew
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: --build-cache --parallel test
-          cache-read-only: false
+        run: |
+          cd app
+          ./gradlew build -p :${{ matrix.test }}:test
+          
+
+
+
+
+
+
