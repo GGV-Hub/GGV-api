@@ -32,7 +32,7 @@ jobs:
       - name: Build with Gradle
         run: |
           cd app
-          ./gradlew build -p :${{ matrix.application }} --build-cache --parallel classe
+          ./gradlew build -p ${{ matrix.application }} --build-cache --parallel classe
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
