@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  ggv-db:
+    image: postgres:13
+    container_name: ggv_postgres
+    environment:
+      POSTGRES_USER: ggv
+      POSTGRES_PASSWORD: ggv1234
+      POSTGRES_DB: ggv
+    ports:
+      - "5432:5432"
