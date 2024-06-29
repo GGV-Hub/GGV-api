@@ -30,10 +30,12 @@ jobs:
           ls -al
           chmod +x ./gradlew
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: --build-cache -p :{{ matrix.application }} --parallel classes
-          cache-read-only: false
+        run: |
+          ./gradlew build -p :{{ matrix.application }} --build-cache --parallel classe
+        # uses: gradle/gradle-build-action@v3
+        # with:
+        #   arguments: --build-cache -p :{{ matrix.application }} --parallel classes
+        #   cache-read-only: false
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
