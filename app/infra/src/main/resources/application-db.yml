@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:postgresql://localhost:5432/ggv_postgres
+    url: jdbc:postgresql://localhost:5432/ggv
     username: ggv
     password: ggv1234
     driver-class-name: org.postgresql.Driver
