@@ -1,6 +1,6 @@
 package com.ggv.wallet.service;
 
-import com.ggv.wallet.repository.ExpenditureRepository;
+import com.ggv.infra.wallet.repository.ExpenditureRepository;
 import com.ggv.wallet.usecase.CreateExpenditureUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

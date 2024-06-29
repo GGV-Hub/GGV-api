@@ -1,4 +1,4 @@
-package com.ggv.wallet.repository;
+package com.ggv.infra.wallet.repository;
 
 import com.ggv.domain.wallet.Expenditure;
 import org.springframework.data.jpa.repository.JpaRepository;
