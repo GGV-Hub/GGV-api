@@ -11,6 +11,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    strategy:      
+      matrix:
+        application:
+          - api/auth
+          - api/ggv
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 21
@@ -27,7 +32,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v3
         with:
-          arguments: --build-cache --parallel classes
+          arguments: --build-cache -p :{{ matrix.application }} --parallel classes
           cache-read-only: false
   test:
     runs-on: ubuntu-latest
