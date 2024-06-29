@@ -32,11 +32,7 @@ jobs:
       - name: Build with Gradle
         run: |
           cd app
-          ./gradlew build -p :{{ matrix.application }} --build-cache --parallel classe
-        # uses: gradle/gradle-build-action@v3
-        # with:
-        #   arguments: --build-cache -p :{{ matrix.application }} --parallel classes
-        #   cache-read-only: false
+          ./gradlew build -p :${{ matrix.application }} --build-cache --parallel classe
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -62,10 +58,10 @@ jobs:
           cd app
           chmod +x ./gradlew
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: --build-cache --parallel :${{ matrix.test }}:test
-          cache-read-only: false
+        run: |
+          cd app
+          ./gradlew build -p :${{ matrix.test }}:test
+          
 
 
 
