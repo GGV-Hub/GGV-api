@@ -18,8 +18,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+      - name: Move to app
+        run: cd app
       - name: Run chmod to make gradlew executable
-        run: chmod +x ./app/gradlew
+        run: |
+          chmod +x ./gradlew
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v3
         with:
@@ -36,8 +39,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+      - name: Move to app
+        run: cd app
       - name: Run chmod to make gradlew executable
-        run: chmod +x ./app/gradlew
+        run: |
+          chmod +x ./gradlew
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v3
         with:
