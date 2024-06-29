@@ -31,6 +31,7 @@ jobs:
           chmod +x ./gradlew
       - name: Build with Gradle
         run: |
+          cd app
           ./gradlew build -p :{{ matrix.application }} --build-cache --parallel classe
         # uses: gradle/gradle-build-action@v3
         # with:
