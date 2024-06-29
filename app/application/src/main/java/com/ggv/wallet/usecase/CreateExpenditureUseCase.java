@@ -1,6 +1,6 @@
 package com.ggv.wallet.usecase;
 
-import com.ggv.wallet.Expenditure;
+import com.ggv.domain.wallet.Expenditure;
 
 public record CreateExpenditureUseCase(
         Long userId,

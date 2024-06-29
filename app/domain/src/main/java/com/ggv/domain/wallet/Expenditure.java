@@ -1,6 +1,6 @@
-package com.ggv.wallet;
+package com.ggv.domain.wallet;
 
-import com.ggv.common.BaseEntity;
+import com.ggv.domain.common.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.AccessLevel;
