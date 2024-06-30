@@ -1,4 +1,4 @@
-package com.ggv.config;
+package com.ggv.infra.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
