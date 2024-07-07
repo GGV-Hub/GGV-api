@@ -7,4 +7,9 @@ jar {
 }
 
 dependencies {
+    // jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // postgresql
+    runtimeOnly 'org.postgresql:postgresql'
 }

@@ -1,4 +1,4 @@
-package com.ggv.auth;
+package com.ggv.infra.auth;
 
 public class SampleRepository {
 }

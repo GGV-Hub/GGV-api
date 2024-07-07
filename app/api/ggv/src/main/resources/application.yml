@@ -1,4 +1,12 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/ggv
+
 spring:
+  profiles:
+    include: jpa, db
+    active: dev
   config:
     import:
       - classpath:application-common.yaml
