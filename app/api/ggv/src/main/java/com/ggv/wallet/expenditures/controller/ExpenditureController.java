@@ -16,7 +16,7 @@ public class ExpenditureController {
 
     private final ExpenditureService expenditureService;
 
-    @PostMapping("/v1/ggv/wallet/expenditures")
+    @PostMapping("/v1/wallet/expenditures")
     public ResponseEntity<Void> createExpenditures(
             @Valid @RequestBody CreateExpenditureDto.Request request
     ) {
