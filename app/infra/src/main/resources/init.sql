@@ -4,6 +4,6 @@ CREATE TABLE expenditure (
     description     VARCHAR(255) NOT NULL,
     payment_method  VARCHAR(255) NOT NULL,
     price           DOUBLE PRECISION NOT NULL,
-    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at      TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
