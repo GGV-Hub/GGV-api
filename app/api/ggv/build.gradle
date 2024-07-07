@@ -10,3 +10,11 @@ dependencies {
     // spring
     implementation "org.springframework.boot:spring-boot-starter-validation"
 }
+
+processResources.dependsOn('copySecret')
+
+tasks.register('copySecret', Copy) {
+    from '../submodule'
+    include "application*.yml"
+    into 'src/main/resources'
+}

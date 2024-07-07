@@ -5,6 +5,8 @@ bootJar {
 jar {
     enabled = true
 }
-
+repositories {
+    mavenCentral()
+}
 dependencies {
 }
