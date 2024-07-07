@@ -1,19 +1,26 @@
 package com.ggv.wallet.usecase;
 
-import com.ggv.domain.wallet.Expense;
+import com.ggv.domain.wallet.UserExpense;
+import java.time.Instant;
 
 public record CreateExpenseUseCase(
         Long userId,
-        String description,
+        String title,
+        Instant dateTime,
+        double price,
         String paymentMethod,
-        double price
+        String category,
+        String memo
 ) {
-    public Expense toEntity() {
-        return Expense.builder()
+    public UserExpense toEntity() {
+        return UserExpense.builder()
                 .userId(userId)
-                .description(description)
-                .paymentMethod(paymentMethod)
+                .title(title)
+                .dateTime(dateTime)
                 .price(price)
+                .paymentMethod(paymentMethod)
+                .category(category)
+                .memo(memo)
                 .build();
     }
 }
