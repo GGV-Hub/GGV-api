@@ -1,4 +1,4 @@
-package com.ggv.infra.auth.entity;
+package com.ggv.infra;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
