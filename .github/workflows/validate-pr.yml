@@ -27,7 +27,6 @@ jobs:
       - name: Run chmod to make gradlew executable
         run: |
           cd app
-          ls -al
           chmod +x ./gradlew
       - name: Build with Gradle
         run: |
@@ -61,10 +60,3 @@ jobs:
         run: |
           cd app
           ./gradlew build -p :${{ matrix.test }}:test
-          
-
-
-
-
-
-
