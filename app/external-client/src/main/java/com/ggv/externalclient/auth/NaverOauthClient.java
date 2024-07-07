@@ -25,7 +25,7 @@ import java.util.Objects;
 @Service
 @RequiredArgsConstructor
 public class NaverOauthClient implements OauthClient {
-
+    public AuthPlatform platform = AuthPlatform.NAVER;
     private final NaverOauthProperties properties;
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
@@ -34,7 +34,7 @@ public class NaverOauthClient implements OauthClient {
     private final String accountUrl = "https://openapi.naver.com/v1/nid/me";
 
     @Override
-    public Token getToken(String code, String state) {
+    public Token getToken(String code) {
         ZonedDateTime now = ZonedDateTime.now();
 
         MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
@@ -42,7 +42,6 @@ public class NaverOauthClient implements OauthClient {
         requestBody.add("client_id", properties.clientId());
         requestBody.add("client_secret", properties.clientSecret());
         requestBody.add("code", code);
-        requestBody.add("state", state);
 
         NaverTokenResponse response;
         try {

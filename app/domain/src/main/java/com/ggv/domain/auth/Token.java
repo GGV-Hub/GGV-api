@@ -1,14 +1,13 @@
 package com.ggv.domain.auth;
 
-import jakarta.inject.Named;
+import java.time.ZonedDateTime;
 
-@Named
-class Auth {
+public class Token {
     private AuthPlatform platform;
     private String accessToken;
     private String refreshToken;
-    private String createdAt;
-    private String expiresAt;
+    private ZonedDateTime createdAt;
+    private ZonedDateTime expiresAt;
 
     public AuthPlatform getPlatform() {
         return platform;
@@ -22,18 +21,18 @@ class Auth {
         return refreshToken;
     }
 
-    public String getCreatedAt() {
+    public ZonedDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public String getExpiresAt() {
+    public ZonedDateTime getExpiresAt() {
         return expiresAt;
     }
 
-    private Auth() {
+    private Token() {
     }
 
-    private Auth(AuthPlatform platform, String accessToken, String refreshToken, String createdAt, String expiresAt) {
+    private Token(AuthPlatform platform, String accessToken, String refreshToken, ZonedDateTime createdAt, ZonedDateTime expiresAt) {
         this.platform = platform;
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
@@ -41,12 +40,12 @@ class Auth {
         this.expiresAt = expiresAt;
     }
 
-    public static Auth createFromGoogle(String accessToken, String refreshToken, String createdAt, String expiresAt) {
-        return new Auth(
-                AuthPlatform.GOOGLE,
+    public static Token create(AuthPlatform platform, String accessToken, String refreshToken, ZonedDateTime expiresAt) {
+        return new Token(
+                platform,
                 accessToken,
                 refreshToken,
-                createdAt,
+                ZonedDateTime.now(),
                 expiresAt
         );
     }
