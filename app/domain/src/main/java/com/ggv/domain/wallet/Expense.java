@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-public class Expenditure extends BaseEntity {
+public class Expense extends BaseEntity {
 
     @Column(nullable = false)
     private Long userId;
@@ -26,7 +26,7 @@ public class Expenditure extends BaseEntity {
     private double price;
 
     @Builder
-    private Expenditure(Long userId, String description, String paymentMethod, double price) {
+    private Expense(Long userId, String description, String paymentMethod, double price) {
         this.userId = userId;
         this.description = description;
         this.paymentMethod = paymentMethod;

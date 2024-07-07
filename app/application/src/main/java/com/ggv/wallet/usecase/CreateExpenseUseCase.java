@@ -1,15 +1,15 @@
 package com.ggv.wallet.usecase;
 
-import com.ggv.domain.wallet.Expenditure;
+import com.ggv.domain.wallet.Expense;
 
-public record CreateExpenditureUseCase(
+public record CreateExpenseUseCase(
         Long userId,
         String description,
         String paymentMethod,
         double price
 ) {
-    public Expenditure toEntity() {
-        return Expenditure.builder()
+    public Expense toEntity() {
+        return Expense.builder()
                 .userId(userId)
                 .description(description)
                 .paymentMethod(paymentMethod)

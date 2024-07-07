@@ -1,9 +1,9 @@
 package com.ggv.wallet.expenditures.dto;
 
-import com.ggv.wallet.usecase.CreateExpenditureUseCase;
+import com.ggv.wallet.usecase.CreateExpenseUseCase;
 import jakarta.validation.constraints.NotBlank;
 
-public record CreateExpenditureDto() {
+public record CreateExpenseDto() {
 
     public record Request(
             @NotBlank(message = "내용이 비어있으면 안됩니다.")
@@ -14,8 +14,8 @@ public record CreateExpenditureDto() {
 
             double price
     ) {
-        public CreateExpenditureUseCase toUseCase(Long userId) {
-            return new CreateExpenditureUseCase(
+        public CreateExpenseUseCase toUseCase(Long userId) {
+            return new CreateExpenseUseCase(
                     userId,
                     this.description,
                     this.paymentMethod,
