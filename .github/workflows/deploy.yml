@@ -20,7 +20,7 @@ jobs:
       id: publicip
       run: |
         response=$(curl -s canhazip.com)
-        echo "ip=$response" >> "$GITHUB_OUTPUT"
+        echo "ip=$response" >> "$G_TOKEN"
 
     - name: Checkout Repository and Submodules
       uses: actions/checkout@v3
