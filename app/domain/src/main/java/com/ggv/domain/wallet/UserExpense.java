@@ -36,10 +36,22 @@ public class UserExpense extends BaseEntity {
     private String memo;
 
     @Builder
-    private UserExpense(Long userId, String title, Instant dateTime, double price, String paymentMethod,
-                        String category,
-                        String memo) {
+    private UserExpense(
+            Long userId, String title, Instant dateTime, double price, String paymentMethod, String category,
+            String memo
+    ) {
         this.userId = userId;
+        this.title = title;
+        this.dateTime = dateTime;
+        this.price = price;
+        this.paymentMethod = paymentMethod;
+        this.category = category;
+        this.memo = memo;
+    }
+
+    public void updateAll(
+            String title, Instant dateTime, double price, String paymentMethod, String category, String memo
+    ) {
         this.title = title;
         this.dateTime = dateTime;
         this.price = price;

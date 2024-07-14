@@ -2,10 +2,12 @@ package com.ggv.wallet.expenditures.controller;
 
 import com.ggv.wallet.expenditures.dto.CreateExpenseDto;
 import com.ggv.wallet.expenditures.dto.request.DeleteExpenseRequest;
+import com.ggv.wallet.expenditures.dto.request.UpdateExpenseRequest;
 import com.ggv.wallet.service.ExpenseService;
 import com.ggv.wallet.usecase.CreateExpenseUseCase;
 import com.ggv.wallet.usecase.DeleteExpenseUseCase;
 import com.ggv.wallet.usecase.ReadMonthlyExpenseUseCase;
+import com.ggv.wallet.usecase.UpdateExpenseUseCase;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -13,7 +15,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +28,7 @@ public class ExpenseController {
 
     private final ExpenseService expenseService;
 
-    @PostMapping("/v1/wallet/expense")
+    @PostMapping("/v1/wallet/expenses")
     public ResponseEntity<Void> createExpense(
             @Valid @RequestBody CreateExpenseDto.Request request
     ) {
@@ -46,7 +50,19 @@ public class ExpenseController {
         return ResponseEntity.ok(monthlyExpenses);
     }
 
-    @DeleteMapping("/v1/wallet/expense")
+    @PutMapping("/v1/wallet/expenses/{expenseId}")
+    public ResponseEntity<ReadMonthlyExpenseUseCase> updateUserExpense(
+            @PathVariable Long expenseId,
+            @RequestBody UpdateExpenseRequest request
+    ) {
+        Long userId = 1L; // TODO 로그인 기능 구현되면 수정
+        UpdateExpenseUseCase useCase = request.toUseCase(userId, expenseId);
+        expenseService.updateUserExpense(useCase);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/v1/wallet/expenses")
     public ResponseEntity<Void> deleteExpenses(
             @Valid @RequestBody DeleteExpenseRequest request
     ) {
@@ -56,6 +72,4 @@ public class ExpenseController {
 
         return ResponseEntity.ok().build();
     }
-
-
 }
