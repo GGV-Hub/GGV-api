@@ -2,7 +2,8 @@ name: Build and Deploy
 
 on:
   push:
-    branches: ["release"]
+    # branches: ["prod"]
+    branches: ["chore/GV-10"]
 
 env:
   working-directory: .
