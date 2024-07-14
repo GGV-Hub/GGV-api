@@ -19,7 +19,9 @@ jobs:
     - name: Public IP
       id: publicip
       uses: haythem/public-ip@v1.3
+      
     - name: Initialize and update submodules
+      working-directory: secret
       run: |
         git submodule init
         git submodule update --recursive

@@ -1,3 +1,3 @@
 [submodule "secret"]
-path = submodule
+path = secret
 url = https://github.com/GGV-Hub/GGV-api-submodule.git
