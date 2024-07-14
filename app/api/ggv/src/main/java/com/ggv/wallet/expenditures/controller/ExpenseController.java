@@ -24,7 +24,7 @@ public class ExpenseController {
 
     private final ExpenseService expenseService;
 
-    @PostMapping("/v1/wallet/expense")
+    @PostMapping("/v1/wallet/expenses")
     public ResponseEntity<Void> createExpense(
             @Valid @RequestBody CreateExpenseDto.Request request
     ) {
@@ -46,7 +46,7 @@ public class ExpenseController {
         return ResponseEntity.ok(monthlyExpenses);
     }
 
-    @DeleteMapping("/v1/wallet/expense")
+    @DeleteMapping("/v1/wallet/expenses")
     public ResponseEntity<Void> deleteExpenses(
             @Valid @RequestBody DeleteExpenseRequest request
     ) {
@@ -56,6 +56,4 @@ public class ExpenseController {
 
         return ResponseEntity.ok().build();
     }
-
-
 }
